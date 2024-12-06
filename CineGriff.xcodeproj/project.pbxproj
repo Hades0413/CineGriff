@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2971826E2D03B51E00D5D581 /* RegistrarUsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2971826D2D03B51E00D5D581 /* RegistrarUsuarioViewController.swift */; };
+		297182722D03B8B900D5D581 /* Pelicula.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297182712D03B8B900D5D581 /* Pelicula.swift */; };
+		297182742D03B8C600D5D581 /* Genero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297182732D03B8C600D5D581 /* Genero.swift */; };
+		297182762D03B8D700D5D581 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297182752D03B8D700D5D581 /* Usuario.swift */; };
+		297182782D03B9BB00D5D581 /* MenuPrincipalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297182772D03B9BB00D5D581 /* MenuPrincipalViewController.swift */; };
+		2971827A2D03BA8600D5D581 /* RegistrarPeliculaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297182792D03BA8600D5D581 /* RegistrarPeliculaViewController.swift */; };
+		2971827E2D03BACF00D5D581 /* RegistrarGeneroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2971827D2D03BACF00D5D581 /* RegistrarGeneroViewController.swift */; };
+		297182802D03BB7D00D5D581 /* DetallePeliculaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2971827F2D03BB7D00D5D581 /* DetallePeliculaViewController.swift */; };
+		297182822D03BB9A00D5D581 /* DetalleGeneroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297182812D03BB9A00D5D581 /* DetalleGeneroViewController.swift */; };
+		297182842D03BC2B00D5D581 /* ListarGeneroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297182832D03BC2B00D5D581 /* ListarGeneroViewController.swift */; };
+		297182862D03BDA800D5D581 /* ItemGeneroTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297182852D03BDA800D5D581 /* ItemGeneroTableViewCell.swift */; };
 		B72A51422D01143600A9627B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72A51412D01143600A9627B /* AppDelegate.swift */; };
 		B72A51442D01143600A9627B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72A51432D01143600A9627B /* SceneDelegate.swift */; };
 		B72A51462D01143600A9627B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72A51452D01143600A9627B /* ViewController.swift */; };
@@ -17,6 +28,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2971826D2D03B51E00D5D581 /* RegistrarUsuarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarUsuarioViewController.swift; sourceTree = "<group>"; };
+		297182712D03B8B900D5D581 /* Pelicula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pelicula.swift; sourceTree = "<group>"; };
+		297182732D03B8C600D5D581 /* Genero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genero.swift; sourceTree = "<group>"; };
+		297182752D03B8D700D5D581 /* Usuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
+		297182772D03B9BB00D5D581 /* MenuPrincipalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPrincipalViewController.swift; sourceTree = "<group>"; };
+		297182792D03BA8600D5D581 /* RegistrarPeliculaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarPeliculaViewController.swift; sourceTree = "<group>"; };
+		2971827D2D03BACF00D5D581 /* RegistrarGeneroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarGeneroViewController.swift; sourceTree = "<group>"; };
+		2971827F2D03BB7D00D5D581 /* DetallePeliculaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetallePeliculaViewController.swift; sourceTree = "<group>"; };
+		297182812D03BB9A00D5D581 /* DetalleGeneroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleGeneroViewController.swift; sourceTree = "<group>"; };
+		297182832D03BC2B00D5D581 /* ListarGeneroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListarGeneroViewController.swift; sourceTree = "<group>"; };
+		297182852D03BDA800D5D581 /* ItemGeneroTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemGeneroTableViewCell.swift; sourceTree = "<group>"; };
 		B72A513E2D01143600A9627B /* CineGriff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CineGriff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B72A51412D01143600A9627B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B72A51432D01143600A9627B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +61,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2971826F2D03B89800D5D581 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				297182712D03B8B900D5D581 /* Pelicula.swift */,
+				297182732D03B8C600D5D581 /* Genero.swift */,
+				297182752D03B8D700D5D581 /* Usuario.swift */,
+				297182772D03B9BB00D5D581 /* MenuPrincipalViewController.swift */,
+				297182792D03BA8600D5D581 /* RegistrarPeliculaViewController.swift */,
+				2971827D2D03BACF00D5D581 /* RegistrarGeneroViewController.swift */,
+				2971827F2D03BB7D00D5D581 /* DetallePeliculaViewController.swift */,
+				297182812D03BB9A00D5D581 /* DetalleGeneroViewController.swift */,
+				297182832D03BC2B00D5D581 /* ListarGeneroViewController.swift */,
+				297182852D03BDA800D5D581 /* ItemGeneroTableViewCell.swift */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		297182702D03B8A400D5D581 /* coredata */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = coredata;
+			sourceTree = "<group>";
+		};
 		B72A51352D01143600A9627B = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +104,8 @@
 		B72A51402D01143600A9627B /* CineGriff */ = {
 			isa = PBXGroup;
 			children = (
+				297182702D03B8A400D5D581 /* coredata */,
+				2971826F2D03B89800D5D581 /* api */,
 				B72A51412D01143600A9627B /* AppDelegate.swift */,
 				B72A51432D01143600A9627B /* SceneDelegate.swift */,
 				B72A51452D01143600A9627B /* ViewController.swift */,
@@ -66,6 +114,7 @@
 				B72A514F2D01143800A9627B /* LaunchScreen.storyboard */,
 				B72A51522D01143800A9627B /* Info.plist */,
 				B72A514A2D01143600A9627B /* CineGriff.xcdatamodeld */,
+				2971826D2D03B51E00D5D581 /* RegistrarUsuarioViewController.swift */,
 			);
 			path = CineGriff;
 			sourceTree = "<group>";
@@ -141,10 +190,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2971827E2D03BACF00D5D581 /* RegistrarGeneroViewController.swift in Sources */,
+				297182762D03B8D700D5D581 /* Usuario.swift in Sources */,
+				297182782D03B9BB00D5D581 /* MenuPrincipalViewController.swift in Sources */,
+				297182802D03BB7D00D5D581 /* DetallePeliculaViewController.swift in Sources */,
+				297182722D03B8B900D5D581 /* Pelicula.swift in Sources */,
 				B72A51462D01143600A9627B /* ViewController.swift in Sources */,
+				2971826E2D03B51E00D5D581 /* RegistrarUsuarioViewController.swift in Sources */,
+				2971827A2D03BA8600D5D581 /* RegistrarPeliculaViewController.swift in Sources */,
+				297182842D03BC2B00D5D581 /* ListarGeneroViewController.swift in Sources */,
 				B72A51422D01143600A9627B /* AppDelegate.swift in Sources */,
 				B72A51442D01143600A9627B /* SceneDelegate.swift in Sources */,
 				B72A514C2D01143600A9627B /* CineGriff.xcdatamodeld in Sources */,
+				297182742D03B8C600D5D581 /* Genero.swift in Sources */,
+				297182862D03BDA800D5D581 /* ItemGeneroTableViewCell.swift in Sources */,
+				297182822D03BB9A00D5D581 /* DetalleGeneroViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

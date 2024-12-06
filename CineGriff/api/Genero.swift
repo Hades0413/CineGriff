@@ -7,6 +7,7 @@
 
 import UIKit
 
-class Genero: NSObject {
-
+struct Genero{
+    var codigo_Genero:Int
+    var nombre_Genero:String
 }
