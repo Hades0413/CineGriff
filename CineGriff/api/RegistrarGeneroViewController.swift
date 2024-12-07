@@ -1,5 +1,5 @@
 //
-//  RegistrarUsuarioViewController.swift
+//  RegistrarGeneroViewController.swift
 //  CineGriff
 //
 //  Created by mals on 6/12/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RegistrarUsuarioViewController: UIViewController {
+class RegistrarGeneroViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,4 +15,5 @@ class RegistrarUsuarioViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+
 }
