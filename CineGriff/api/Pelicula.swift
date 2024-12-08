@@ -1,12 +1,14 @@
-//
-//  Pelicula.swift
-//  CineGriff
-//
-//  Created by mals on 6/12/24.
-//
 
 import UIKit
 
-class Pelicula: NSObject {
+struct Pelicula: Codable {
 
+    var codigoPelicula:Int
+    var tituloPelicula:String
+    var descripcionPelicula:String
+    var duracionPelicula:String
+    var directorPelicula:String
+    var genero: Genero 
+    var fechaEstrenoPelicula:Date
+    var clasificacionEdad:Int
 }
