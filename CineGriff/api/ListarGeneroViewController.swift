@@ -25,7 +25,7 @@ class ListarGeneroViewController: UIViewController,UITableViewDataSource,UITable
     }
     
     func listado() {
-        AF.request("http://localhost:8080/api/genero/listar").responseDecodable(of: [Genero].self) { response in
+        AF.request("https://cinegriffapi-production.up.railway.app/api/genero/listar").responseDecodable(of: [Genero].self) { response in
             
             guard let generos = response.value else {
                 print("Error al obtener los géneros")
@@ -37,29 +37,33 @@ class ListarGeneroViewController: UIViewController,UITableViewDataSource,UITable
     }
 
     func buscarGenero(nombreGenero: String) {
-        guard !nombreGenero.isEmpty else {
-            self.listaFiltrada = []
-            self.tvGenero.reloadData()
-            return
+        
+        let searchText = nombreGenero.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if searchText.isEmpty {
+            listaFiltrada = lista
+        } else {
+            listaFiltrada = lista.filter { genero in
+                return genero.nombreGenero.lowercased().contains(searchText)
+            }
         }
         
-        let url = "http://localhost:8080/api/genero/nombre/\(nombreGenero)"
-        AF.request(url).responseDecodable(of: [Genero].self) { response in
-            guard let generos = response.value else {
-                print("Error al obtener el nombre del Género")
-                return
-            }
-            self.listaFiltrada = generos
-            self.tvGenero.reloadData()
+        self.buscando = true
+        self.tvGenero.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let textoBusqueda = searchBar.text {
+            buscarGenero(nombreGenero: textoBusqueda)
         }
+        searchBar.resignFirstResponder()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
+            listaFiltrada = lista
             buscando = false
-            listaFiltrada = []
         } else {
-            buscando = true
             buscarGenero(nombreGenero: searchText)
         }
         tvGenero.reloadData()
@@ -74,10 +78,10 @@ class ListarGeneroViewController: UIViewController,UITableViewDataSource,UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let fila = tvGenero.dequeueReusableCell(withIdentifier: "row") as! ItemGeneroTableViewCell
-        let genero = buscando ? listaFiltrada[indexPath.row] : lista[indexPath.row]
-        fila.lblCodigoGenero.text = String(genero.codigoGenero)
-        fila.lblNombreGenero.text = genero.nombreGenero
-        return fila
+                let genero = buscando ? listaFiltrada[indexPath.row] : lista[indexPath.row]
+                fila.lblCodigoGenero.text = String(genero.codigoGenero)
+                fila.lblNombreGenero.text = genero.nombreGenero
+                return fila
     }
 
     // prepare para la navegación cuando se selecciona un género
