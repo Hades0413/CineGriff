@@ -11,4 +11,5 @@ struct Pelicula: Codable {
     var genero: Genero 
     var fechaEstrenoPelicula:Date
     var clasificacionEdad:Int
+
 }

@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -298,7 +299,7 @@
         <!--Listar Genero View Controller-->
         <scene sceneID="dvF-99-Onw">
             <objects>
-                <viewController id="uFv-Do-YeD" customClass="ListarGeneroViewController" customModule="CineGriff" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="uFv-Do-YeD" customClass="ListarGeneroViewController" customModule="CineGriff" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nYt-Mp-ZZu">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -373,6 +374,7 @@
                         <viewLayoutGuide key="safeArea" id="zw8-c2-QRc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ZwP-o4-rw4"/>
                     <connections>
                         <outlet property="sbBuscarGenero" destination="Ro6-E9-OCu" id="Ya6-P6-pOk"/>
                         <outlet property="tvGenero" destination="mhH-a0-aDY" id="6gJ-8r-eTx"/>
@@ -389,24 +391,132 @@
                     <view key="view" contentMode="scaleToFill" id="KkH-2X-qpo">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjd-RU-dGK">
+                                <rect key="frame" x="133" y="373" width="127" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Listar Genero"/>
+                                <connections>
+                                    <action selector="btnListarGenero:" destination="59l-NF-Fei" eventType="touchUpInside" id="RZZ-ht-N1W"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H60-Gi-q6r">
+                                <rect key="frame" x="132" y="445" width="129" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Listar Pelicula"/>
+                                <connections>
+                                    <action selector="btnListarPelicula:" destination="59l-NF-Fei" eventType="touchUpInside" id="dae-JG-0S0"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="OdS-Bj-MvB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="605-3Y-mbC"/>
                     <connections>
                         <segue destination="aSQ-9r-q2Y" kind="show" identifier="registrarPelicula" id="305-4N-gE2"/>
+                        <segue destination="uFv-Do-YeD" kind="show" identifier="listarGenero" id="iHV-WU-cKK"/>
+                        <segue destination="YNe-L5-Jb0" kind="show" identifier="listarPelicula" id="nap-NQ-vwP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bW8-QQ-xls" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1040" y="-27"/>
+            <point key="canvasLocation" x="1038.9312977099237" y="-27.464788732394368"/>
+        </scene>
+        <!--Listar Pelicula View Controller-->
+        <scene sceneID="lK1-pa-g7T">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="YNe-L5-Jb0" customClass="ListarPeliculaViewController" customModule="CineGriff" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s3U-Qy-FX0">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9CV-wF-cea">
+                                <rect key="frame" x="16" y="199" width="361" height="633"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HU0-sh-vnM">
+                                    <size key="itemSize" width="167" height="295"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="row" id="BCi-3v-aOW" customClass="ItemPeliculaCollectionViewCell" customModule="CineGriff" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="167" height="295"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Q6l-RG-kDm">
+                                            <rect key="frame" x="0.0" y="0.0" width="167" height="295"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dtA-gt-cSU">
+                                                    <rect key="frame" x="0.0" y="0.0" width="167" height="196"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4B-hy-axu">
+                                                    <rect key="frame" x="93" y="195" width="74" height="100"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fll-VT-kzN">
+                                                    <rect key="frame" x="0.0" y="194" width="73" height="100"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="167" height="295"/>
+                                        <connections>
+                                            <outlet property="imgPelicula" destination="dtA-gt-cSU" id="LqG-kO-zoV"/>
+                                            <outlet property="lblFechaEstrenoPelicula" destination="N4B-hy-axu" id="zqf-4U-QOq"/>
+                                            <outlet property="lblTituloPelicula" destination="fll-VT-kzN" id="toQ-6P-aYb"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vsh-zB-j6r">
+                                <rect key="frame" x="0.0" y="129" width="393" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="YNe-L5-Jb0" id="Wbw-a3-Nqp"/>
+                                </connections>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2Q-Vy-Or0">
+                                <rect key="frame" x="129" y="64" width="135" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Nueva Pelicula"/>
+                                <connections>
+                                    <action selector="btnPelicula:" destination="YNe-L5-Jb0" eventType="touchUpInside" id="tRv-BQ-3gh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qMu-J1-dl8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="EBF-PO-YeJ"/>
+                    <connections>
+                        <outlet property="cvPelicula" destination="9CV-wF-cea" id="xSk-WA-1ac"/>
+                        <outlet property="sbBuscarTitulo" destination="Vsh-zB-j6r" id="Dl1-M4-afJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="etZ-NL-3dh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1887.7862595419847" y="-494.36619718309862"/>
         </scene>
         <!--Registrar Pelicula View Controller-->
         <scene sceneID="Kc7-6h-fdk">
             <objects>
-                <viewController id="aSQ-9r-q2Y" customClass="RegistrarPeliculaViewController" customModule="CineGriff" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="aSQ-9r-q2Y" customClass="RegistrarPeliculaViewController" customModule="CineGriff" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PWH-4T-JvD">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Y0L-te-gLM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -463,6 +573,9 @@
             <point key="canvasLocation" x="3633" y="275"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="3Cy-f1-6Lw"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="login_background" width="1200" height="800"/>
         <systemColor name="secondarySystemBackgroundColor">

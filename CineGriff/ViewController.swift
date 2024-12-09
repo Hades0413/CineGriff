@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func btnLogin(_ sender: Any) {
+        performSegue(withIdentifier: "menuPrincipal", sender: nil)
     }
     
     @IBAction func btnShowRegistrar(_ sender: Any) {
