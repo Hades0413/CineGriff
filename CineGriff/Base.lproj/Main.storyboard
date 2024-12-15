@@ -255,7 +255,6 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="btnRegistrarUsuario:" destination="q2A-Le-SlG" eventType="touchUpInside" id="Mck-RN-4TG"/>
-                                            <action selector="btnShowRegistrar:" destination="q2A-Le-SlG" eventType="touchUpInside" id="7Ic-0M-qsd"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcE-IM-RPW">
@@ -573,9 +572,6 @@
             <point key="canvasLocation" x="3633" y="275"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="3Cy-f1-6Lw"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="login_background" width="1200" height="800"/>
         <systemColor name="secondarySystemBackgroundColor">
