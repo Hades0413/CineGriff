@@ -1,4 +1,6 @@
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class RegistrarUsuarioViewController: UIViewController {
 
@@ -27,15 +29,56 @@ class RegistrarUsuarioViewController: UIViewController {
         //styles -> RegistrarUsuarioUIStyling
         setupUIRegistrarUsuario()
     }
-
     
+    func crearUsuario(codigoUsuario:String,usernameUsuario:String,nombreUsuario:String,apellidoUsuario:String){
+        
+        let BD=Firestore.firestore()
+        BD.collection("usuario").document(codigoUsuario).setData([
+            "usernameUsuario": usernameUsuario,
+            "nombreUsuario": nombreUsuario,
+            "apellidoUsuario": apellidoUsuario,
+
+        ]){
+            data in
+            if let info=data{
+                self.ventana("Error en el registro de Usuario")
+            } else{
+                self.ventana("Usuario registrado exitosamente")
+            }
+        }
+        
+    }
+    
+    func registrarUsuario(username:String,nombre:String,apellido:String,correo:String,contra:String){
+        Auth.auth().createUser(withEmail: correo, password: contra){ data,error in
+            if let info=data{
+                let codigo=info.user.uid
+                self.ventana("Usuario registrado correctamente")
+                self.crearUsuario(codigoUsuario: codigo, usernameUsuario: username, nombreUsuario: nombre, apellidoUsuario: apellido)
+            } else{
+                self.ventana("Error en el registro de Usuario")
+            }
+        }
+    }
     
 
     @IBAction func btnRegistrarUsuario(_ sender: UIButton) {
+        let username=txtUsernameUsuario.text ?? ""
+        let nom=txtNombreUsuario.text ?? ""
+        let ape=txtApellidoUsuario.text ?? ""
+        let correo=txtCorreoUsuario.text ?? ""
+        let contra=txtContrasenaUsuario.text ?? ""
+        registrarUsuario(username: username, nombre: nom, apellido: ape, correo: correo, contra: contra)
     }
     
     @IBAction func btnShowLogin(_ sender: Any) {
         performSegue(withIdentifier: "login", sender: self)
+    }
+    
+    func ventana(_ msg:String){
+        let pantalla=UIAlertController(title: "Sistema", message: msg, preferredStyle: .alert)
+        pantalla.addAction(UIAlertAction(title: "Aceptar", style: .default))
+        present(pantalla, animated: true)
     }
     
     

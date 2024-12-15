@@ -20,7 +20,7 @@
 		297182862D03BDA800D5D581 /* ItemGeneroTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297182852D03BDA800D5D581 /* ItemGeneroTableViewCell.swift */; };
 		2977BFF32D069C0200609CF5 /* ListarPeliculaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2977BFF22D069C0200609CF5 /* ListarPeliculaViewController.swift */; };
 		2977BFF72D069FA900609CF5 /* ItemPeliculaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2977BFF62D069FA900609CF5 /* ItemPeliculaCollectionViewCell.swift */; };
-		29B21B662D0F4F1A00547BA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29B21B652D0F4F1A00547BA9 /* GoogleService-Info.plist */; };
+		29B21B682D0F506700547BA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29B21B672D0F506700547BA9 /* GoogleService-Info.plist */; };
 		7DBAAFDD9F272FB7BC35F15D /* Pods_CineGriff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19028B90775A746A2A0B2DE /* Pods_CineGriff.framework */; };
 		B72A51422D01143600A9627B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72A51412D01143600A9627B /* AppDelegate.swift */; };
 		B72A51442D01143600A9627B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72A51432D01143600A9627B /* SceneDelegate.swift */; };
@@ -47,7 +47,7 @@
 		297182852D03BDA800D5D581 /* ItemGeneroTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemGeneroTableViewCell.swift; sourceTree = "<group>"; };
 		2977BFF22D069C0200609CF5 /* ListarPeliculaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListarPeliculaViewController.swift; sourceTree = "<group>"; };
 		2977BFF62D069FA900609CF5 /* ItemPeliculaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPeliculaCollectionViewCell.swift; sourceTree = "<group>"; };
-		29B21B652D0F4F1A00547BA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		29B21B672D0F506700547BA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A19028B90775A746A2A0B2DE /* Pods_CineGriff.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CineGriff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B72A513E2D01143600A9627B /* CineGriff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CineGriff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B72A51412D01143600A9627B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,7 +133,7 @@
 		B72A51402D01143600A9627B /* CineGriff */ = {
 			isa = PBXGroup;
 			children = (
-				29B21B652D0F4F1A00547BA9 /* GoogleService-Info.plist */,
+				29B21B672D0F506700547BA9 /* GoogleService-Info.plist */,
 				DC8F747C2D04FD590095BE9A /* styles */,
 				2971826F2D03B89800D5D581 /* api */,
 				B72A51412D01143600A9627B /* AppDelegate.swift */,
@@ -220,7 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B72A51512D01143800A9627B /* LaunchScreen.storyboard in Resources */,
-				29B21B662D0F4F1A00547BA9 /* GoogleService-Info.plist in Resources */,
+				29B21B682D0F506700547BA9 /* GoogleService-Info.plist in Resources */,
 				B72A514E2D01143800A9627B /* Assets.xcassets in Resources */,
 				B72A51492D01143600A9627B /* Main.storyboard in Resources */,
 			);

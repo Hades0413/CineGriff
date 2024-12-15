@@ -9,4 +9,6 @@ target 'CineGriff' do
 
   # Pods for CineGriff
 pod 'Alamofire'
+pod 'Firebase/Firestore'
+pod 'Firebase/Auth'
 end
