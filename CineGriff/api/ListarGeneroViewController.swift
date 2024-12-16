@@ -70,6 +70,7 @@ class ListarGeneroViewController: UIViewController,UITableViewDataSource,UITable
     }
     
     @IBAction func btnNuevoGenero(_ sender: UIButton) {
+        performSegue(withIdentifier: "registrarGenero", sender: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,14 +85,15 @@ class ListarGeneroViewController: UIViewController,UITableViewDataSource,UITable
                 return fila
     }
 
-    // prepare para la navegación cuando se selecciona un género
-    /*
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "detalleGenero", sender: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detalleGenero" {
             let pantallaDetalleGenero = segue.destination as! DetalleGeneroViewController
             pantallaDetalleGenero.genero = lista[tvGenero.indexPathForSelectedRow!.row]
         }
     }
-    */
 
 }
