@@ -2,9 +2,7 @@ import UIKit
 import Alamofire
 
 class ListarGeneroViewController: UIViewController,UITableViewDataSource,UITableViewDelegate, UISearchBarDelegate  {
-    
-    
-    
+
     @IBOutlet weak var tvGenero: UITableView!
     
     @IBOutlet weak var sbBuscarGenero: UISearchBar!
@@ -32,7 +30,6 @@ class ListarGeneroViewController: UIViewController,UITableViewDataSource,UITable
             return
         }
         
-        // Ordena los géneros por codigoGenero (de menor a mayor)
         self.lista = generos.sorted { $0.codigoGenero < $1.codigoGenero }
         
         self.tvGenero.reloadData()

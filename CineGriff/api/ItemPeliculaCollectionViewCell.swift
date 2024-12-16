@@ -1,10 +1,3 @@
-//
-//  ItemPeliculaCollectionViewCell.swift
-//  CineGriff
-//
-//  Created by mals on 8/12/24.
-//
-
 import UIKit
 
 class ItemPeliculaCollectionViewCell: UICollectionViewCell {

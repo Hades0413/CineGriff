@@ -1,10 +1,3 @@
-//
-//  ListarPeliculaViewController.swift
-//  CineGriff
-//
-//  Created by mals on 8/12/24.
-//
-
 import UIKit
 import Alamofire
 
@@ -26,17 +19,18 @@ class ListarPeliculaViewController: UIViewController,UICollectionViewDataSource,
         sbBuscarTitulo.delegate = self
     }
     
-    func listado(){
-        AF.request("https://cinegriffapi-production.up.railway.app/api/pelicula/listar").responseDecodable(of: [Pelicula].self) { response in
-            switch response.result {
-            case .success(let peliculas):
-                self.lista = peliculas
-                self.cvPelicula.reloadData()
-            case .failure(let error):
-                print("Error al obtener las películas: \(error.localizedDescription)")
-            }
+    func listado() {
+    AF.request("https://cinegriffapi-production.up.railway.app/api/pelicula/listar").responseDecodable(of: [Pelicula].self) { response in
+        switch response.result {
+        case .success(let peliculas):
+            self.lista = peliculas.sorted { $0.codigoPelicula < $1.codigoPelicula }
+            self.cvPelicula.reloadData()
+        case .failure(let error):
+            print("Error al obtener las películas: \(error.localizedDescription)")
         }
     }
+    }
+
     
     func buscarTitulo(tituloPelicula: String) {
         
