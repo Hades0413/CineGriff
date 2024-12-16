@@ -9,7 +9,7 @@ struct Pelicula: Codable {
     var duracionPelicula:String
     var directorPelicula:String
     var genero: Genero 
-    var fechaEstrenoPelicula:Date
+    var fechaEstrenoPelicula:String
     var clasificacionEdad:Int
 
 }
