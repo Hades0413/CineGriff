@@ -25,14 +25,17 @@ class ListarGeneroViewController: UIViewController,UITableViewDataSource,UITable
     }
     
     func listado() {
-        AF.request("https://cinegriffapi-production.up.railway.app/api/genero/listar").responseDecodable(of: [Genero].self) { response in
-            
-            guard let generos = response.value else {
-                print("Error al obtener los géneros")
-                return
-            }
-            self.lista = generos
-            self.tvGenero.reloadData()
+    AF.request("https://cinegriffapi-production.up.railway.app/api/genero/listar").responseDecodable(of: [Genero].self) { response in
+        
+        guard let generos = response.value else {
+            print("Error al obtener los géneros")
+            return
+        }
+        
+        // Ordena los géneros por codigoGenero (de menor a mayor)
+        self.lista = generos.sorted { $0.codigoGenero < $1.codigoGenero }
+        
+        self.tvGenero.reloadData()
         }
     }
 
