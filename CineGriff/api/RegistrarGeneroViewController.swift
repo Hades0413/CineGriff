@@ -7,7 +7,9 @@ class RegistrarGeneroViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Aplicar los estilos
+        setupUIRegistrarGenero()
     }
     
     @IBAction func btnGrabarGenero(_ sender: UIButton) {

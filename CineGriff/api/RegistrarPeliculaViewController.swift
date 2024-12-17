@@ -1,6 +1,6 @@
 import UIKit
 import Alamofire
-class RegistrarPeliculaViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
+class RegistrarPeliculaViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     
     @IBOutlet weak var txtTitulo: UITextField!
     
@@ -16,11 +16,18 @@ class RegistrarPeliculaViewController: UIViewController, UIPickerViewDelegate, U
     
     @IBOutlet weak var pvGenero: UIPickerView!
     
+    @IBOutlet weak var imgBannerPelicula: UIImageView!
+    
+    
     var generos: [Genero] = []
     var generoSeleccionado: Genero?
     
+    var nombreImagenSeleccionada: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUIRegistrarPelicula()
         
         pvGenero.delegate=self
         pvGenero.dataSource=self
@@ -73,6 +80,8 @@ class RegistrarPeliculaViewController: UIViewController, UIPickerViewDelegate, U
         })
     }
     
+    
+    
     func formatDateToString(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
@@ -88,13 +97,56 @@ class RegistrarPeliculaViewController: UIViewController, UIPickerViewDelegate, U
         let dir = String(txtDirector.text ?? "0")
         let cla = Int(txtClasificacion.text ?? "0") ?? 0
         let fec = formatDateToString(dpFechaEstreno.date)
-        guard let gen = generoSeleccionado else { print("Por favor, complete todos los campos."); return }
-        let obj = Pelicula(codigoPelicula: cod, tituloPelicula: tit, descripcionPelicula: des, duracionPelicula: dur, directorPelicula: dir, genero: gen, fechaEstrenoPelicula: fec, clasificacionEdad: cla)
-        registrarPelicula(bean: obj)
+        let img = nombreImagenSeleccionada ?? ""
+            guard let gen = generoSeleccionado else {
+                print("Por favor, complete todos los campos.");
+                return
+            }
+            
+            let obj = Pelicula(
+                codigoPelicula: cod,
+                tituloPelicula: tit,
+                descripcionPelicula: des,
+                duracionPelicula: dur,
+                directorPelicula: dir,
+                genero: gen,
+                fechaEstrenoPelicula: fec,
+                clasificacionEdad: cla,
+                bannerPelicula: img
+            )
+            
+            registrarPelicula(bean: obj)
     }
     
     @IBAction func btnVolver(_ sender: UIButton) {
         performSegue(withIdentifier: "volverListarPelicula1", sender: nil)
+    }
+    
+    
+    @IBAction func btnSubirIMG(_ sender: UIButton) {
+        let imagePicker=UIImagePickerController()
+        imagePicker.delegate=self
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let selectedImage = info[.originalImage] as? UIImage {
+                imgBannerPelicula.image = selectedImage
+                
+                // Intentamos obtener la URL del archivo de la imagen
+                if let imageURL = info[.imageURL] as? URL {
+                    // Extraemos el nombre de la imagen desde la URL
+                    nombreImagenSeleccionada = imageURL.lastPathComponent
+                }
+            }
+            dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func btnActualizarPelicula(_ sender: UIButton) {
+    }
+    
+    @IBAction func btnEliminarPelicula(_ sender: UIButton) {
     }
     
     

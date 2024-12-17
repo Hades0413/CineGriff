@@ -31,6 +31,14 @@
 		B72A514C2D01143600A9627B /* CineGriff.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B72A514A2D01143600A9627B /* CineGriff.xcdatamodeld */; };
 		B72A514E2D01143800A9627B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B72A514D2D01143800A9627B /* Assets.xcassets */; };
 		B72A51512D01143800A9627B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B72A514F2D01143800A9627B /* LaunchScreen.storyboard */; };
+		B73BDFF52D10D62D008236AF /* RegistrarGeneroUIStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73BDFF42D10D62D008236AF /* RegistrarGeneroUIStyling.swift */; };
+		B73BDFF72D10DA56008236AF /* DetalleGeneroUIStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73BDFF62D10DA56008236AF /* DetalleGeneroUIStyling.swift */; };
+		B73BDFFB2D10DB29008236AF /* RegistrarPeliculaUIStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73BDFFA2D10DB29008236AF /* RegistrarPeliculaUIStyling.swift */; };
+		B73BE0012D10E09D008236AF /* Goat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73BE0002D10E09D008236AF /* Goat.swift */; };
+		B73BE0032D10E231008236AF /* GoatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73BE0022D10E231008236AF /* GoatViewController.swift */; };
+		B73BE0052D10E3DE008236AF /* ItemGoatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73BE0042D10E3DE008236AF /* ItemGoatTableViewCell.swift */; };
+		B73BE0072D10EAF0008236AF /* ControladorGoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73BE0062D10EAF0008236AF /* ControladorGoat.swift */; };
+		B73BE0092D10EB12008236AF /* PMetodos.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73BE0082D10EB12008236AF /* PMetodos.swift */; };
 		DC8F747E2D04FD880095BE9A /* RegistrarUsuarioUIStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8F747D2D04FD880095BE9A /* RegistrarUsuarioUIStyling.swift */; };
 		DC8F74802D0510310095BE9A /* LoginUsuarioUIStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8F747F2D0510310095BE9A /* LoginUsuarioUIStyling.swift */; };
 /* End PBXBuildFile section */
@@ -62,6 +70,14 @@
 		B72A514D2D01143800A9627B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B72A51502D01143800A9627B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B72A51522D01143800A9627B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B73BDFF42D10D62D008236AF /* RegistrarGeneroUIStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarGeneroUIStyling.swift; sourceTree = "<group>"; };
+		B73BDFF62D10DA56008236AF /* DetalleGeneroUIStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleGeneroUIStyling.swift; sourceTree = "<group>"; };
+		B73BDFFA2D10DB29008236AF /* RegistrarPeliculaUIStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarPeliculaUIStyling.swift; sourceTree = "<group>"; };
+		B73BE0002D10E09D008236AF /* Goat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goat.swift; sourceTree = "<group>"; };
+		B73BE0022D10E231008236AF /* GoatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoatViewController.swift; sourceTree = "<group>"; };
+		B73BE0042D10E3DE008236AF /* ItemGoatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemGoatTableViewCell.swift; sourceTree = "<group>"; };
+		B73BE0062D10EAF0008236AF /* ControladorGoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControladorGoat.swift; sourceTree = "<group>"; };
+		B73BE0082D10EB12008236AF /* PMetodos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMetodos.swift; sourceTree = "<group>"; };
 		D03EAA80856FB3DE8C4AA5B7 /* Pods-CineGriff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CineGriff.release.xcconfig"; path = "Target Support Files/Pods-CineGriff/Pods-CineGriff.release.xcconfig"; sourceTree = "<group>"; };
 		DC8F747D2D04FD880095BE9A /* RegistrarUsuarioUIStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarUsuarioUIStyling.swift; sourceTree = "<group>"; };
 		DC8F747F2D0510310095BE9A /* LoginUsuarioUIStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUsuarioUIStyling.swift; sourceTree = "<group>"; };
@@ -139,6 +155,7 @@
 		B72A51402D01143600A9627B /* CineGriff */ = {
 			isa = PBXGroup;
 			children = (
+				B73BDFFC2D10DFAE008236AF /* coredata */,
 				29B21B672D0F506700547BA9 /* GoogleService-Info.plist */,
 				DC8F747C2D04FD590095BE9A /* styles */,
 				2971826F2D03B89800D5D581 /* api */,
@@ -155,11 +172,26 @@
 			path = CineGriff;
 			sourceTree = "<group>";
 		};
+		B73BDFFC2D10DFAE008236AF /* coredata */ = {
+			isa = PBXGroup;
+			children = (
+				B73BE0002D10E09D008236AF /* Goat.swift */,
+				B73BE0022D10E231008236AF /* GoatViewController.swift */,
+				B73BE0042D10E3DE008236AF /* ItemGoatTableViewCell.swift */,
+				B73BE0062D10EAF0008236AF /* ControladorGoat.swift */,
+				B73BE0082D10EB12008236AF /* PMetodos.swift */,
+			);
+			path = coredata;
+			sourceTree = "<group>";
+		};
 		DC8F747C2D04FD590095BE9A /* styles */ = {
 			isa = PBXGroup;
 			children = (
 				DC8F747D2D04FD880095BE9A /* RegistrarUsuarioUIStyling.swift */,
 				DC8F747F2D0510310095BE9A /* LoginUsuarioUIStyling.swift */,
+				B73BDFF42D10D62D008236AF /* RegistrarGeneroUIStyling.swift */,
+				B73BDFF62D10DA56008236AF /* DetalleGeneroUIStyling.swift */,
+				B73BDFFA2D10DB29008236AF /* RegistrarPeliculaUIStyling.swift */,
 			);
 			path = styles;
 			sourceTree = "<group>";
@@ -282,8 +314,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				2977BFF72D069FA900609CF5 /* ItemPeliculaCollectionViewCell.swift in Sources */,
+				B73BE0092D10EB12008236AF /* PMetodos.swift in Sources */,
+				B73BE0032D10E231008236AF /* GoatViewController.swift in Sources */,
 				292BC74C2D0FF2BC00D035A4 /* SuccessResponse.swift in Sources */,
+				B73BDFFB2D10DB29008236AF /* RegistrarPeliculaUIStyling.swift in Sources */,
+				B73BE0052D10E3DE008236AF /* ItemGoatTableViewCell.swift in Sources */,
+				B73BDFF52D10D62D008236AF /* RegistrarGeneroUIStyling.swift in Sources */,
 				DC8F74802D0510310095BE9A /* LoginUsuarioUIStyling.swift in Sources */,
+				B73BE0012D10E09D008236AF /* Goat.swift in Sources */,
+				B73BDFF72D10DA56008236AF /* DetalleGeneroUIStyling.swift in Sources */,
 				2971827E2D03BACF00D5D581 /* RegistrarGeneroViewController.swift in Sources */,
 				297182762D03B8D700D5D581 /* Usuario.swift in Sources */,
 				297182782D03B9BB00D5D581 /* MenuPrincipalViewController.swift in Sources */,
@@ -301,6 +340,7 @@
 				297182742D03B8C600D5D581 /* Genero.swift in Sources */,
 				DC8F747E2D04FD880095BE9A /* RegistrarUsuarioUIStyling.swift in Sources */,
 				297182862D03BDA800D5D581 /* ItemGeneroTableViewCell.swift in Sources */,
+				B73BE0072D10EAF0008236AF /* ControladorGoat.swift in Sources */,
 				297182822D03BB9A00D5D581 /* DetalleGeneroViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

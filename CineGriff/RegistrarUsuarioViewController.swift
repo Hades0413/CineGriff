@@ -1,4 +1,5 @@
 import UIKit
+import Alamofire
 import FirebaseAuth
 import FirebaseFirestore
 
@@ -49,7 +50,7 @@ class RegistrarUsuarioViewController: UIViewController {
         
     }
     
-    func registrarUsuario(username:String,nombre:String,apellido:String,correo:String,contra:String){
+    func registrarUsuarioFB(username:String,nombre:String,apellido:String,correo:String,contra:String){
         Auth.auth().createUser(withEmail: correo, password: contra){ data,error in
             if let info=data{
                 let codigo=info.user.uid
@@ -61,6 +62,24 @@ class RegistrarUsuarioViewController: UIViewController {
         }
     }
     
+    func registrarUsuarioAPI(bean:Usuario){
+            AF.request("https://cinegriffapi-production.up.railway.app/api/usuario/register",method: .post, parameters: bean, encoder: JSONParameterEncoder.default).response(completionHandler: { data in
+                switch data.result{
+                    case .success(let info):
+                    do{
+                        let obj =
+                        try JSONDecoder().decode(Usuario.self, from: info!)
+                        self.ventana("Gènero guardado con Codigo: \(obj.codigoUsuario)")
+                    }catch{
+                        print("Error en el JSON")
+                    }
+                    case .failure(let error as NSError):
+                        print(error)
+                }
+                
+            })
+        }
+    
 
     @IBAction func btnRegistrarUsuario(_ sender: UIButton) {
         let username=txtUsernameUsuario.text ?? ""
@@ -68,7 +87,9 @@ class RegistrarUsuarioViewController: UIViewController {
         let ape=txtApellidoUsuario.text ?? ""
         let correo=txtCorreoUsuario.text ?? ""
         let contra=txtContrasenaUsuario.text ?? ""
-        registrarUsuario(username: username, nombre: nom, apellido: ape, correo: correo, contra: contra)
+        let obj=Usuario(codigoUsuario: 0, usernameUsuario: username, nombreUsuario: nom, apellidoUsuario: ape, correoUsuario: correo, contrasenaUsuario: contra, isadminUsuario: 0)
+        registrarUsuarioFB(username: username, nombre: nom, apellido: ape, correo: correo, contra: contra)
+        registrarUsuarioAPI(bean: obj)
     }
     
     @IBAction func btnShowLogin(_ sender: Any) {

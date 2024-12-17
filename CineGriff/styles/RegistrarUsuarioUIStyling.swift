@@ -8,7 +8,7 @@ extension RegistrarUsuarioViewController {
         // Fondo de la imagen
         setupBackgroundImage()
         
-        // Degradado
+        // Degradadoå
         setupGradientBackground()
         
         // Configuración de los campos de texto

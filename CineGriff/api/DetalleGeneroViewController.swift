@@ -12,6 +12,9 @@ class DetalleGeneroViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Configuración de los estilos
+               setupUIDetalleGenero()
+        
         txtCodigoGenero.text=String(genero.codigoGenero)
         txtCodigoGenero.isEnabled=false
         
