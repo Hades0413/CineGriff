@@ -35,6 +35,45 @@ class DetallePeliculaViewController: UIViewController {
         lblDetalleClasificacion.text=String(pelicula.clasificacionEdad)
 
     }
+
+/* agregar botón actualizar y colocar esto
+    @IBAction func btnActualizarPelicula(_ sender: UIButton) {
+        let cod = pelicula.codigoPelicula
+        let titulo = txtDetalleTitulo.text ?? ""
+        let descripcion = txtDetalleDescripcion.text ?? ""
+        let duracion = txtDetalleDuracion.text ?? ""
+        let director = txtDetalleDirector.text ?? ""
+        let genero = txtDetalleGenero.text ?? ""
+        let fechaEstreno = txtDetalleFechaEstreno.text ?? ""
+        let clasificacion = Int(txtDetalleClasificacion.text ?? "0") ?? 0
+        
+        // Actualizar el objeto película con los nuevos valores
+        pelicula.tituloPelicula = titulo
+        pelicula.descripcionPelicula = descripcion
+        pelicula.duracionPelicula = duracion
+        pelicula.directorPelicula = director
+        pelicula.genero.nombreGenero = genero
+        pelicula.fechaEstrenoPelicula = fechaEstreno
+        pelicula.clasificacionEdad = clasificacion
+        
+        // Llamar al método para actualizar
+        actualizarPelicula(cod: cod, bean: pelicula)
+    }
+   */ 
+
+func actualizarPelicula(cod: Int, bean: Pelicula) {
+        AF.request("https://cinegriffapi-production.up.railway.app/api/pelicula/" + String(cod),
+                   method: .put,
+                   parameters: bean,
+                   encoder: JSONParameterEncoder.default).response { data in
+            switch data.result {
+            case .success:
+                self.ventana1("Película actualizada correctamente")
+            case .failure(let error as NSError):
+                print(error.localizedDescription)
+            }
+        }
+    }
     
     
     @IBAction func btnEliminarPelicula(_ sender: UIButton) {

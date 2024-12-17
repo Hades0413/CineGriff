@@ -63,23 +63,103 @@ class RegistrarPeliculaViewController: UIViewController, UIPickerViewDelegate, U
             }
         }
     
-    func registrarPelicula(bean:Pelicula){
-        AF.request("https://cinegriffapi-production.up.railway.app/api/pelicula/register",method: .post, parameters: bean, encoder: JSONParameterEncoder.default).response(completionHandler: { data in
-            switch data.result{
-                case .success(let info):
-                do{
-                    let obj =
-                    try JSONDecoder().decode(Pelicula.self, from: info!)
-                    self.ventana("Pelicula guardada con Codigo: \(obj.codigoPelicula)")
-                }catch{
-                    print("Error en el JSON")
+    func registrarPelicula(bean: Pelicula) {
+    AF.request(
+        "https://cinegriffapi-production.up.railway.app/api/pelicula/register",
+        method: .post,
+        parameters: bean,
+        encoder: JSONParameterEncoder.default
+    )
+    .response { response in
+        if let data = response.data, let jsonString = String(data: data, encoding: .utf8) {
+            print("Respuesta de la API: \(jsonString)")
+        } else {
+            print("No se recibió respuesta o los datos están vacíos.")
+        }
+        
+        // Verificar el código de estado HTTP
+        if let statusCode = response.response?.statusCode {
+            switch statusCode {
+            case 201:
+                // Procesar respuesta de éxito
+                if let data = response.data {
+                    do {
+                        let obj = try JSONDecoder().decode(Pelicula.self, from: data)
+                        self.ventana("Película guardada con Código: \(obj.codigoPelicula)")
+                    } catch {
+                        print("Error al decodificar el JSON de éxito: \(error)")
+                        self.ventana("Error al procesar los datos de la película.")
+                    }
+                } else {
+                    print("Error: no se recibieron datos de respuesta con código 201.")
+                    self.ventana("Error: no se recibieron datos de respuesta.")
                 }
-                case .failure(let error as NSError):
-                print("Error al registrar la película: \(error)")
+
+            case 400, 409:
+                // Procesar errores específicos
+                if let data = response.data {
+                    do {
+                        let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)
+                        self.ventana("Error al registrar la película: \(errorResponse.mensaje)")
+                    } catch {
+                        print("Error al decodificar el JSON de error: \(error)")
+                        self.ventana("Error desconocido al registrar la película.")
+                    }
+                } else {
+                    print("Error: no se recibieron datos de error con código \(statusCode).")
+                    self.ventana("Error: no se recibieron datos de error.")
+                }
+
+            default:
+                // Manejar otros códigos de estado desconocidos
+                self.ventana("Error desconocido: Código de estado \(statusCode)")
             }
-        })
+        } else {
+            self.ventana("No se recibió un código de estado válido.")
+        }
     }
+}
+
     
+
+        
+        // Decodificación para respuesta de éxito (201)
+        func decodeSuccessResponse(data: Data?) {
+    guard let data = data else {
+        self.ventana("No se recibió respuesta válida.")
+        return
+    }
+
+    do {
+        let successResponse = try JSONDecoder().decode(SuccessResponse.self, from: data)
+        self.ventana("Género registrado con éxito: \(successResponse.status)")
+    } catch let error {
+        print("Error al procesar la respuesta de éxito: \(error.localizedDescription)")
+        self.ventana("Error al procesar la respuesta de éxito.")
+    }
+}
+
+func decodeErrorResponse(data: Data?) {
+    guard let data = data else {
+        self.ventana("No se recibió respuesta válida.")
+        return
+    }
+
+    do {
+        let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)
+        
+        if errorResponse.code == 409 {
+            self.ventana("Error: \(errorResponse.message)")
+        } else {
+            self.ventana("Error desconocido: \(errorResponse.message)")
+        }
+    } catch let error {
+        // Imprimir el error de decodificación para depuración
+        print("Error al procesar la respuesta de error: \(error.localizedDescription)")
+        self.ventana("Error al procesar la respuesta de error.")
+    }
+}
+
     
     
     func formatDateToString(_ date: Date) -> String {
