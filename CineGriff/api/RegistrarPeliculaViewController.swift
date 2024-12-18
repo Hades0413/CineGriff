@@ -100,7 +100,7 @@ class RegistrarPeliculaViewController: UIViewController, UIPickerViewDelegate, U
                 if let data = response.data {
                     do {
                         let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)
-                        self.ventana("Error al registrar la película: \(errorResponse.mensaje)")
+                        self.ventana("Error al registrar la película: \(errorResponse.message)")
                     } catch {
                         print("Error al decodificar el JSON de error: \(error)")
                         self.ventana("Error desconocido al registrar la película.")

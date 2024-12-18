@@ -15,5 +15,9 @@ class MenuPrincipalViewController: UIViewController {
         performSegue(withIdentifier: "listarPelicula", sender: nil)
     }
     
+    @IBAction func btnListarGoats(_ sender: UIButton) {
+        performSegue(withIdentifier: "listarGoats", sender: nil)
+    }
+    
     
 }

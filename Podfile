@@ -11,4 +11,6 @@ target 'CineGriff' do
 pod 'Alamofire'
 pod 'Firebase/Firestore'
 pod 'Firebase/Auth'
+pod 'Firebase/Core'
+pod 'GoogleSignIn'
 end

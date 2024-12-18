@@ -2,27 +2,38 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.46117726078-u3muvsrq1cek0lbibsk27lg6q3jti2cl</string>
+			</array>
+		</dict>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Gokhan.ttf</string>
-        <string>poppins.black-italic.ttf</string>
-        <string>poppins.extrabold-italic.ttf</string>
-        <string>poppins.bold-italic.ttf</string>
-        <string>poppins.semibold-italic.ttf</string>
-        <string>poppins.medium-italic.ttf</string>
-        <string>poppins.light-italic.ttf</string>
-        <string>poppins.extralight-italic.ttf</string>
-        <string>poppins.thin-italic.ttf</string>
-        <string>poppins.italic.ttf</string>
-        <string>poppins.black.ttf</string>
-        <string>poppins.extrabold.ttf</string>
-        <string>poppins.bold.ttf</string>
-        <string>poppins.semibold.ttf</string>
-        <string>poppins.medium.ttf</string>
-        <string>poppins.light.ttf</string>
-        <string>poppins.extralight.ttf</string>
-        <string>poppins.thin.ttf</string>
-        <string>poppins.regular.ttf</string>
+		<string>poppins.black-italic.ttf</string>
+		<string>poppins.extrabold-italic.ttf</string>
+		<string>poppins.bold-italic.ttf</string>
+		<string>poppins.semibold-italic.ttf</string>
+		<string>poppins.medium-italic.ttf</string>
+		<string>poppins.light-italic.ttf</string>
+		<string>poppins.extralight-italic.ttf</string>
+		<string>poppins.thin-italic.ttf</string>
+		<string>poppins.italic.ttf</string>
+		<string>poppins.black.ttf</string>
+		<string>poppins.extrabold.ttf</string>
+		<string>poppins.bold.ttf</string>
+		<string>poppins.semibold.ttf</string>
+		<string>poppins.medium.ttf</string>
+		<string>poppins.light.ttf</string>
+		<string>poppins.extralight.ttf</string>
+		<string>poppins.thin.ttf</string>
+		<string>poppins.regular.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

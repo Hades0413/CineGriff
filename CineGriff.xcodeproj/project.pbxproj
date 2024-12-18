@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		292BC74A2D0FF27800D035A4 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292BC7492D0FF27800D035A4 /* ErrorResponse.swift */; };
 		292BC74C2D0FF2BC00D035A4 /* SuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292BC74B2D0FF2BC00D035A4 /* SuccessResponse.swift */; };
+		295FA6002D1261CE00B91B80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 295FA5FF2D1261CE00B91B80 /* Main.storyboard */; };
+		295FA6042D12646B00B91B80 /* DatosPeliculasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295FA6032D12646B00B91B80 /* DatosPeliculasViewController.swift */; };
 		2971826E2D03B51E00D5D581 /* RegistrarUsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2971826D2D03B51E00D5D581 /* RegistrarUsuarioViewController.swift */; };
 		297182722D03B8B900D5D581 /* Pelicula.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297182712D03B8B900D5D581 /* Pelicula.swift */; };
 		297182742D03B8C600D5D581 /* Genero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297182732D03B8C600D5D581 /* Genero.swift */; };
@@ -23,11 +25,10 @@
 		2977BFF32D069C0200609CF5 /* ListarPeliculaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2977BFF22D069C0200609CF5 /* ListarPeliculaViewController.swift */; };
 		2977BFF72D069FA900609CF5 /* ItemPeliculaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2977BFF62D069FA900609CF5 /* ItemPeliculaCollectionViewCell.swift */; };
 		29B21B682D0F506700547BA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29B21B672D0F506700547BA9 /* GoogleService-Info.plist */; };
-		7DBAAFDD9F272FB7BC35F15D /* Pods_CineGriff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19028B90775A746A2A0B2DE /* Pods_CineGriff.framework */; };
+		9736B892CFCC0201A7FFCC7C /* Pods_CineGriff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB53A6A7DD27A0EB1D748A17 /* Pods_CineGriff.framework */; };
 		B72A51422D01143600A9627B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72A51412D01143600A9627B /* AppDelegate.swift */; };
 		B72A51442D01143600A9627B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72A51432D01143600A9627B /* SceneDelegate.swift */; };
 		B72A51462D01143600A9627B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72A51452D01143600A9627B /* ViewController.swift */; };
-		B72A51492D01143600A9627B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B72A51472D01143600A9627B /* Main.storyboard */; };
 		B72A514C2D01143600A9627B /* CineGriff.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B72A514A2D01143600A9627B /* CineGriff.xcdatamodeld */; };
 		B72A514E2D01143800A9627B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B72A514D2D01143800A9627B /* Assets.xcassets */; };
 		B72A51512D01143800A9627B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B72A514F2D01143800A9627B /* LaunchScreen.storyboard */; };
@@ -46,6 +47,8 @@
 /* Begin PBXFileReference section */
 		292BC7492D0FF27800D035A4 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		292BC74B2D0FF2BC00D035A4 /* SuccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessResponse.swift; sourceTree = "<group>"; };
+		295FA5FF2D1261CE00B91B80 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		295FA6032D12646B00B91B80 /* DatosPeliculasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatosPeliculasViewController.swift; sourceTree = "<group>"; };
 		2971826D2D03B51E00D5D581 /* RegistrarUsuarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarUsuarioViewController.swift; sourceTree = "<group>"; };
 		297182712D03B8B900D5D581 /* Pelicula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pelicula.swift; sourceTree = "<group>"; };
 		297182732D03B8C600D5D581 /* Genero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genero.swift; sourceTree = "<group>"; };
@@ -60,12 +63,12 @@
 		2977BFF22D069C0200609CF5 /* ListarPeliculaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListarPeliculaViewController.swift; sourceTree = "<group>"; };
 		2977BFF62D069FA900609CF5 /* ItemPeliculaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPeliculaCollectionViewCell.swift; sourceTree = "<group>"; };
 		29B21B672D0F506700547BA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		A19028B90775A746A2A0B2DE /* Pods_CineGriff.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CineGriff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AEBDC89012A5B06B99F409A /* Pods-CineGriff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CineGriff.release.xcconfig"; path = "Target Support Files/Pods-CineGriff/Pods-CineGriff.release.xcconfig"; sourceTree = "<group>"; };
+		A1561E7F1476C3D55FB33E02 /* Pods-CineGriff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CineGriff.debug.xcconfig"; path = "Target Support Files/Pods-CineGriff/Pods-CineGriff.debug.xcconfig"; sourceTree = "<group>"; };
 		B72A513E2D01143600A9627B /* CineGriff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CineGriff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B72A51412D01143600A9627B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B72A51432D01143600A9627B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B72A51452D01143600A9627B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B72A51482D01143600A9627B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B72A514B2D01143600A9627B /* CineGriff.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CineGriff.xcdatamodel; sourceTree = "<group>"; };
 		B72A514D2D01143800A9627B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B72A51502D01143800A9627B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -78,10 +81,9 @@
 		B73BE0042D10E3DE008236AF /* ItemGoatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemGoatTableViewCell.swift; sourceTree = "<group>"; };
 		B73BE0062D10EAF0008236AF /* ControladorGoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControladorGoat.swift; sourceTree = "<group>"; };
 		B73BE0082D10EB12008236AF /* PMetodos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMetodos.swift; sourceTree = "<group>"; };
-		D03EAA80856FB3DE8C4AA5B7 /* Pods-CineGriff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CineGriff.release.xcconfig"; path = "Target Support Files/Pods-CineGriff/Pods-CineGriff.release.xcconfig"; sourceTree = "<group>"; };
+		CB53A6A7DD27A0EB1D748A17 /* Pods_CineGriff.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CineGriff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8F747D2D04FD880095BE9A /* RegistrarUsuarioUIStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarUsuarioUIStyling.swift; sourceTree = "<group>"; };
 		DC8F747F2D0510310095BE9A /* LoginUsuarioUIStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUsuarioUIStyling.swift; sourceTree = "<group>"; };
-		E86B0011CCE626AA29054CA2 /* Pods-CineGriff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CineGriff.debug.xcconfig"; path = "Target Support Files/Pods-CineGriff/Pods-CineGriff.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DBAAFDD9F272FB7BC35F15D /* Pods_CineGriff.framework in Frameworks */,
+				9736B892CFCC0201A7FFCC7C /* Pods_CineGriff.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,14 +115,15 @@
 				2977BFF62D069FA900609CF5 /* ItemPeliculaCollectionViewCell.swift */,
 				292BC7492D0FF27800D035A4 /* ErrorResponse.swift */,
 				292BC74B2D0FF2BC00D035A4 /* SuccessResponse.swift */,
+				295FA6032D12646B00B91B80 /* DatosPeliculasViewController.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
 		};
-		8467CDDDCE144E96DC5798AC /* Frameworks */ = {
+		68843533397A6FBFCA9B3B35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A19028B90775A746A2A0B2DE /* Pods_CineGriff.framework */,
+				CB53A6A7DD27A0EB1D748A17 /* Pods_CineGriff.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -128,8 +131,8 @@
 		A783032E0D55E484CDB34B7B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E86B0011CCE626AA29054CA2 /* Pods-CineGriff.debug.xcconfig */,
-				D03EAA80856FB3DE8C4AA5B7 /* Pods-CineGriff.release.xcconfig */,
+				A1561E7F1476C3D55FB33E02 /* Pods-CineGriff.debug.xcconfig */,
+				2AEBDC89012A5B06B99F409A /* Pods-CineGriff.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -140,7 +143,7 @@
 				B72A51402D01143600A9627B /* CineGriff */,
 				B72A513F2D01143600A9627B /* Products */,
 				A783032E0D55E484CDB34B7B /* Pods */,
-				8467CDDDCE144E96DC5798AC /* Frameworks */,
+				68843533397A6FBFCA9B3B35 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -155,6 +158,7 @@
 		B72A51402D01143600A9627B /* CineGriff */ = {
 			isa = PBXGroup;
 			children = (
+				295FA5FF2D1261CE00B91B80 /* Main.storyboard */,
 				B73BDFFC2D10DFAE008236AF /* coredata */,
 				29B21B672D0F506700547BA9 /* GoogleService-Info.plist */,
 				DC8F747C2D04FD590095BE9A /* styles */,
@@ -163,7 +167,6 @@
 				B72A51432D01143600A9627B /* SceneDelegate.swift */,
 				B72A51452D01143600A9627B /* ViewController.swift */,
 				2971826D2D03B51E00D5D581 /* RegistrarUsuarioViewController.swift */,
-				B72A51472D01143600A9627B /* Main.storyboard */,
 				B72A514D2D01143800A9627B /* Assets.xcassets */,
 				B72A514F2D01143800A9627B /* LaunchScreen.storyboard */,
 				B72A51522D01143800A9627B /* Info.plist */,
@@ -203,11 +206,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B72A51552D01143800A9627B /* Build configuration list for PBXNativeTarget "CineGriff" */;
 			buildPhases = (
-				7A23A820138D3D6BE3927A6F /* [CP] Check Pods Manifest.lock */,
+				47E0B8D79F0784DB0FE928B1 /* [CP] Check Pods Manifest.lock */,
 				B72A513A2D01143600A9627B /* Sources */,
 				B72A513B2D01143600A9627B /* Frameworks */,
 				B72A513C2D01143600A9627B /* Resources */,
-				C999C1EAB59787CB21AD0CF7 /* [CP] Embed Pods Frameworks */,
+				289B1696A5E6461EA5253A37 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -260,14 +263,31 @@
 				B72A51512D01143800A9627B /* LaunchScreen.storyboard in Resources */,
 				29B21B682D0F506700547BA9 /* GoogleService-Info.plist in Resources */,
 				B72A514E2D01143800A9627B /* Assets.xcassets in Resources */,
-				B72A51492D01143600A9627B /* Main.storyboard in Resources */,
+				295FA6002D1261CE00B91B80 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7A23A820138D3D6BE3927A6F /* [CP] Check Pods Manifest.lock */ = {
+		289B1696A5E6461EA5253A37 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CineGriff/Pods-CineGriff-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CineGriff/Pods-CineGriff-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CineGriff/Pods-CineGriff-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		47E0B8D79F0784DB0FE928B1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -289,23 +309,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C999C1EAB59787CB21AD0CF7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CineGriff/Pods-CineGriff-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CineGriff/Pods-CineGriff-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CineGriff/Pods-CineGriff-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -320,6 +323,7 @@
 				B73BDFFB2D10DB29008236AF /* RegistrarPeliculaUIStyling.swift in Sources */,
 				B73BE0052D10E3DE008236AF /* ItemGoatTableViewCell.swift in Sources */,
 				B73BDFF52D10D62D008236AF /* RegistrarGeneroUIStyling.swift in Sources */,
+				295FA6042D12646B00B91B80 /* DatosPeliculasViewController.swift in Sources */,
 				DC8F74802D0510310095BE9A /* LoginUsuarioUIStyling.swift in Sources */,
 				B73BE0012D10E09D008236AF /* Goat.swift in Sources */,
 				B73BDFF72D10DA56008236AF /* DetalleGeneroUIStyling.swift in Sources */,
@@ -348,14 +352,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B72A51472D01143600A9627B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B72A51482D01143600A9627B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B72A514F2D01143800A9627B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -488,7 +484,7 @@
 		};
 		B72A51562D01143800A9627B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E86B0011CCE626AA29054CA2 /* Pods-CineGriff.debug.xcconfig */;
+			baseConfigurationReference = A1561E7F1476C3D55FB33E02 /* Pods-CineGriff.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -518,7 +514,7 @@
 		};
 		B72A51572D01143800A9627B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D03EAA80856FB3DE8C4AA5B7 /* Pods-CineGriff.release.xcconfig */;
+			baseConfigurationReference = 2AEBDC89012A5B06B99F409A /* Pods-CineGriff.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

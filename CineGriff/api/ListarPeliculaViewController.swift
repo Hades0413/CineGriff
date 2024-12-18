@@ -90,16 +90,28 @@ class ListarPeliculaViewController: UIViewController,UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "detallePelicula", sender: nil)
+        let peliculaSeleccionada: Pelicula
+            if buscando {
+                peliculaSeleccionada = listaFiltrada[indexPath.row]
+            } else {
+                peliculaSeleccionada = lista[indexPath.row] 
+            }
+        performSegue(withIdentifier: "datosPelicula", sender: peliculaSeleccionada)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detallePelicula" {
-            let pantallaDetallePelicula = segue.destination as! DetallePeliculaViewController
-            if let indexPath = cvPelicula.indexPathsForSelectedItems?.first {
-                pantallaDetallePelicula.pelicula = lista[indexPath.row]
+        
+        if segue.identifier == "datosPelicula" {
+            let pantallaDetallePelicula = segue.destination as! DatosPeliculasViewController
+            if let pelicula = sender as? Pelicula {
+                        pantallaDetallePelicula.pelicula = pelicula
             }
         }
     }
-   
+    
+    
+    @IBAction func btnHome1(_ sender: UIButton) {
+        performSegue(withIdentifier: "home1", sender: nil)
+    }
+    
 }

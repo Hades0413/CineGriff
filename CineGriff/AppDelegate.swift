@@ -8,6 +8,8 @@
 import UIKit
 import CoreData
 import FirebaseCore
+import GoogleSignIn
+import Firebase
 
 
 @main

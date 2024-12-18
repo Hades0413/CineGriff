@@ -95,5 +95,9 @@ class ListarGeneroViewController: UIViewController,UITableViewDataSource,UITable
             pantallaDetalleGenero.genero = lista[tvGenero.indexPathForSelectedRow!.row]
         }
     }
+    
+    @IBAction func btnHome2(_ sender: UIButton) {
+        performSegue(withIdentifier: "home2", sender: nil)
+    }
 
 }

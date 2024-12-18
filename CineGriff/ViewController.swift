@@ -1,5 +1,10 @@
 import UIKit
 import FirebaseAuth
+import Alamofire
+import FirebaseFirestore
+import GoogleSignIn
+import FirebaseFirestoreInternal
+import Firebase
 
 class ViewController: UIViewController {
 
@@ -108,11 +113,54 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func btnGoogle(_ sender: UIButton) {
+            guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+                    
+                let config = GIDConfiguration(clientID: clientID)
+                GIDSignIn.sharedInstance.configuration = config
+                
+                GIDSignIn.sharedInstance.signIn(withPresenting: self) { result, error in
+                    if let error = error {
+                        print("Error al iniciar sesión con Google: \(error.localizedDescription)")
+                        self.ventana("Error: No se pudo iniciar sesión con Google.")
+                        return
+                    }
+                    
+                    guard let user = result?.user, let idToken = user.idToken?.tokenString else {
+                        return
+                    }
+                    
+                    let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                                   accessToken: user.accessToken.tokenString)
+                    
+                    Auth.auth().signIn(with: credential) { [weak self] (authResult, error) in
+                        if let error = error {
+                            print("Error al autenticar con Firebase: \(error.localizedDescription)")
+                            self?.ventana("Error: No se pudo autenticar con Firebase.")
+                            return
+                        }
+                        
+                       
+                        print("Inicio de sesión exitoso con Google")
+                        self?.obtenerDatosUsuario(authResult?.user)
+                    }
+                }
+            }
+
+            func obtenerDatosUsuario(_ user: User?) {
+                guard let user = user else { return }
+                let nombre = user.displayName ?? "Usuario"
+                
+                print("Usuario: \(nombre), Email: \(user.email ?? "")")
+                // Realiza el segue a la pantalla principal
+                self.performSegue(withIdentifier: "menuPrincipal", sender: nombre)
+            }
+    
 
 
     @IBAction func btnShowRegistrar(_ sender: Any) {
         performSegue(withIdentifier: "registrarUsuario", sender: self)
-        
     }
     
     func ventana(_ msg:String){
