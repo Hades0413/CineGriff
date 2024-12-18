@@ -72,47 +72,49 @@ class ViewController: UIViewController {
 
     // Registra al usuario en la API
     func registrarUsuarioEnAPI(uid: String, correoUsuario: String, codigoUsuario: Int) {
-        let usuario = Usuario(codigoUsuario: codigoUsuario, usernameUsuario: uid, nombreUsuario: "", apellidoUsuario: "", correoUsuario: correoUsuario, contrasenaUsuario: "", isadminUsuario: 0)
-        
-        AF.request("https://cinegriffapi-production.up.railway.app/api/usuario/register",
-                   method: .post,
-                   parameters: usuario,
-                   encoder: JSONParameterEncoder.default)
-            .response { response in
-                switch response.result {
-                case .success(let data):
-                    if let data = data {
-                        do {
-                            let obj = try JSONDecoder().decode(Usuario.self, from: data)
-                            print("Usuario guardado en API con Código: \(obj.codigoUsuario)")
-                        } catch {
-                            print("Error en la respuesta JSON")
-                        }
+    let usuario = Usuario(codigoUsuario: codigoUsuario, usernameUsuario: uid, nombreUsuario: "", apellidoUsuario: "", correoUsuario: correoUsuario, contrasenaUsuario: "", isadminUsuario: 0)
+    
+    AF.request("https://cinegriffapi-production.up.railway.app/api/usuario/register",
+               method: .post,
+               parameters: usuario,
+               encoder: JSONParameterEncoder.default)
+        .response { response in
+            switch response.result {
+            case .success(let data):
+                if let data = data {
+                    do {
+                        let obj = try JSONDecoder().decode(Usuario.self, from: data)
+                        print("Usuario guardado en API con Código: \(obj.codigoUsuario)")
+                    } catch {
+                        print("Error en la respuesta JSON")
                     }
-                case .failure(let error):
-                    print("Error: \(error)")
                 }
+            case .failure(let error):
+                print("Error: \(error)")
             }
-    }
+        }
+}
+
 
     // Registra al usuario en Firestore
     func registrarUsuarioEnFirestore(uid: String, correoUsuario: String, codigoUsuario: Int) {
-        let BD = Firestore.firestore()
-        BD.collection("usuario").document(uid).setData([
-            "usernameUsuario": uid,
-            "nombreUsuario": "",
-            "apellidoUsuario": "",
-            "correoUsuario": correoUsuario,
-            "codigoUsuario": codigoUsuario,
-            "isadminUsuario": 0
-        ]) { error in
-            if let error = error {
-                print("Error en el registro en Firestore: \(error.localizedDescription)")
-            } else {
-                print("Usuario registrado en Firestore")
-            }
+    let BD = Firestore.firestore()
+    BD.collection("usuario").document(uid).setData([
+        "usernameUsuario": uid,
+        "nombreUsuario": "",
+        "apellidoUsuario": "",
+        "correoUsuario": correoUsuario,
+        "codigoUsuario": codigoUsuario,
+        "isadminUsuario": 0
+    ]) { error in
+        if let error = error {
+            print("Error en el registro en Firestore: \(error.localizedDescription)")
+        } else {
+            print("Usuario registrado en Firestore")
         }
     }
+}
+
     
     @IBAction func btnGoogle(_ sender: UIButton) {
             guard let clientID = FirebaseApp.app()?.options.clientID else { return }
@@ -148,15 +150,70 @@ class ViewController: UIViewController {
                 }
             }
 
-            func obtenerDatosUsuario(_ user: User?) {
-                guard let user = user else { return }
-                let nombre = user.displayName ?? "Usuario"
+func obtenerDatosUsuario(_ user: User?) {
+    guard let user = user else { return }
+    
+    let uid = user.uid
+    let nombre = user.displayName ?? "Usuario"
+    let correo = user.email ?? ""
+    
+    // Primero, verifica si el usuario ya existe en Firestore
+    let BD = Firestore.firestore()
+    BD.collection("usuario").document(uid).getDocument { document, error in
+        if let error = error {
+            print("Error al consultar Firestore: \(error.localizedDescription)")
+            return
+        }
+
+        if let document = document, document.exists {
+            // El usuario ya existe en Firestore
+            print("Usuario ya registrado en Firestore: \(nombre), \(correo)")
+            self.performSegue(withIdentifier: "menuPrincipal", sender: nombre)
+        } else {
+            // El usuario no existe en Firestore, obtenemos el último código de usuario
+            self.obtenerUltimoCodigoDeUsuario { ultimoCodigo in
+                let nuevoCodigoUsuario = ultimoCodigo + 1
                 
-                print("Usuario: \(nombre), Email: \(user.email ?? "")")
-                // Realiza el segue a la pantalla principal
+                // Registrar al usuario en la API
+                self.registrarUsuarioEnAPI(uid: uid, correoUsuario: correo, codigoUsuario: nuevoCodigoUsuario)
+                
+                // Registrar al usuario en Firestore
+                self.registrarUsuarioEnFirestore(uid: uid, correoUsuario: correo, codigoUsuario: nuevoCodigoUsuario)
+                
+                // Realizar segue al menú principal
                 self.performSegue(withIdentifier: "menuPrincipal", sender: nombre)
             }
-    
+        }
+    }
+}
+
+func obtenerUltimoCodigoDeUsuario(completion: @escaping (Int) -> Void) {
+    AF.request("https://cinegriffapi-production.up.railway.app/api/usuario/listar")
+        .response { response in
+            switch response.result {
+            case .success(let data):
+                if let data = data {
+                    do {
+                        // Decodificar la respuesta JSON para obtener los usuarios
+                        let usuarios = try JSONDecoder().decode([Usuario].self, from: data)
+                        
+                        // Obtener el último código de usuario
+                        if let ultimoUsuario = usuarios.last {
+                            completion(ultimoUsuario.codigoUsuario)
+                        } else {
+                            completion(0) // Si no hay usuarios, el primer código será 1
+                        }
+                    } catch {
+                        print("Error al decodificar la respuesta de la API")
+                        completion(0) // En caso de error, comenzamos desde 1
+                    }
+                }
+            case .failure(let error):
+                print("Error al consultar la API: \(error)")
+                completion(0) // En caso de error en la API, comenzamos desde 1
+            }
+        }
+}
 
 
     @IBAction func btnShowRegistrar(_ sender: Any) {

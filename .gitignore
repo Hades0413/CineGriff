@@ -1,0 +1,22 @@
+# Ignore the Pods directory (CocoaPods dependencies)
+Pods/
+
+# Ignore Xcode's user-specific files
+*.xcuserstate      # Files related to user-specific settings in Xcode
+*.xcworkspace      # Xcode workspace files (can be regenerated)
+*.xcodeproj/project.xcworkspace  # Xcode project workspace file
+xcuserdata/        # User-specific data for Xcode projects
+
+# Ignore build and product directories
+build/             # Build output directory
+DerivedData/       # Directory for Xcode's temporary files, cache, etc.
+
+# Ignore CocoaPods artifacts (CocoaPods dependency lock file)
+Podfile.lock       # Lock file that records versions of installed dependencies
+
+# Ignore other macOS system files
+.DS_Store          # macOS system files for Finder settings
+
+# Ignore other IDE specific files (e.g., JetBrains, VSCode)
+.idea/             # JetBrains IDE specific files (e.g., IntelliJ, WebStorm)
+.vscode/           # Visual Studio Code settings folder
