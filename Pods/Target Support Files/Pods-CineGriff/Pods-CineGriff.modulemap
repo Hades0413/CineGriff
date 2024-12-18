@@ -1,6 +1,0 @@
-framework module Pods_CineGriff {
-  umbrella header "Pods-CineGriff-umbrella.h"
-
-  export *
-  module * { export * }
-}
