@@ -40,7 +40,7 @@ func registrarGenero(gen: Genero) {
                         self.decodeSuccessResponse(data: data)
                     } else {
                         print("Error: no se recibieron datos de respuesta con código 201.")
-                        self.ventana("Error: no se recibieron datos de respuesta.")
+                        self.ventana2("Error: no se recibieron datos de respuesta.")
                     }
 
                 case 400, 409:
@@ -49,14 +49,14 @@ func registrarGenero(gen: Genero) {
                         self.decodeErrorResponse(data: data)
                     } else {
                         print("Error: no se recibieron datos de error con código \(statusCode).")
-                        self.ventana("Error: no se recibieron datos de error.")
+                        self.ventana2("Error: no se recibieron datos de error.")
                     }
 
                 default:
-                    self.ventana("Error desconocido: \(statusCode)")
+                    self.ventana2("Error: \(statusCode)")
                 }
             } else {
-                self.ventana("No se recibió un código de estado válido.")
+                self.ventana2("No se recibió un código de estado válido.")
             }
         }
 }
@@ -66,7 +66,7 @@ func registrarGenero(gen: Genero) {
         // Decodificación para respuesta de éxito (201)
         func decodeSuccessResponse(data: Data?) {
     guard let data = data else {
-        self.ventana("No se recibió respuesta válida.")
+        self.ventana2("No se recibió respuesta válida.")
         return
     }
 
@@ -75,13 +75,13 @@ func registrarGenero(gen: Genero) {
         self.ventana("Género registrado con éxito: \(successResponse.status)")
     } catch let error {
         print("Error al procesar la respuesta de éxito: \(error.localizedDescription)")
-        self.ventana("Error al procesar la respuesta de éxito.")
+        self.ventana2("Error al procesar la respuesta de éxito.")
     }
 }
 
 func decodeErrorResponse(data: Data?) {
     guard let data = data else {
-        self.ventana("No se recibió respuesta válida.")
+        self.ventana2("No se recibió respuesta válida.")
         return
     }
 
@@ -89,14 +89,14 @@ func decodeErrorResponse(data: Data?) {
         let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)
         
         if errorResponse.code == 409 {
-            self.ventana("Error: \(errorResponse.message)")
+            self.ventana2("Error: \(errorResponse.message)")
         } else {
-            self.ventana("Error desconocido: \(errorResponse.message)")
+            self.ventana2("Error desconocido: \(errorResponse.message)")
         }
     } catch let error {
         // Imprimir el error de decodificación para depuración
         print("Error al procesar la respuesta de error: \(error.localizedDescription)")
-        self.ventana("Error al procesar la respuesta de error.")
+        self.ventana2("Error al procesar la respuesta de error.")
     }
 }
 
@@ -118,5 +118,11 @@ func decodeErrorResponse(data: Data?) {
                 self.present(pantalla, animated: true)
             }
         }
+    
+    func ventana2(_ msg:String){
+        let pantalla=UIAlertController(title: "Sistema", message: msg, preferredStyle: .alert)
+        pantalla.addAction(UIAlertAction(title: "Aceptar", style: .default))
+        present(pantalla, animated: true)
+    }
     
 }

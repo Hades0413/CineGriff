@@ -30,53 +30,49 @@ class RegistrarUsuarioViewController: UIViewController {
         setupUIRegistrarUsuario()
     }
     
-    func crearUsuario(codigoUsuario:String,usernameUsuario:String,nombreUsuario:String,apellidoUsuario:String){
-        
-        let BD=Firestore.firestore()
-        BD.collection("usuario").document(codigoUsuario).setData([
-            "usernameUsuario": usernameUsuario,
-            "nombreUsuario": nombreUsuario,
-            "apellidoUsuario": apellidoUsuario,
-
-        ]){
-            data in
-            if let info=data{
-                self.ventana("Error en el registro de Usuario")
-            } else{
-                self.ventana("Usuario registrado exitosamente")
-            }
-        }
-        
-    }
-    
-    func registrarUsuarioFB(username:String,nombre:String,apellido:String,correo:String,contra:String){
-        Auth.auth().createUser(withEmail: correo, password: contra){ data,error in
-            if let info=data{
-                let codigo=info.user.uid
-                self.ventana("Usuario registrado correctamente")
-                self.crearUsuario(codigoUsuario: codigo, usernameUsuario: username, nombreUsuario: nombre, apellidoUsuario: apellido)
-            } else{
-                self.ventana("Error en el registro de Usuario")
-            }
-        }
-    }
     
     func registrarUsuarioAPI(bean:Usuario){
-            AF.request("https://cinegriffapi-production.up.railway.app/api/usuario/register",method: .post, parameters: bean, encoder: JSONParameterEncoder.default).response(completionHandler: { data in
-                switch data.result{
+        AF.request("https://cinegriffapi-production.up.railway.app/api/usuario/register",
+                       method: .post,
+                       parameters: bean,
+                       encoder: JSONParameterEncoder.default)
+                .response { data in
+                    switch data.result {
                     case .success(let info):
-                    do{
-                        let obj =
-                        try JSONDecoder().decode(Usuario.self, from: info!)
-                        self.ventana("Gènero guardado con Codigo: \(obj.codigoUsuario)")
-                    }catch{
-                        print("Error en el JSON")
-                    }
+                        if let jsonString = String(data: info!, encoding: .utf8) {
+                            print("Respuesta JSON: \(jsonString)")  // Imprime la respuesta JSON para verificación
+                        }
+                        do {
+                            // Intentamos decodificar como respuesta de éxito (ResponseMessage)
+                            let response = try JSONDecoder().decode(SuccessResponse.self, from: info!)
+                            
+                            if response.status == 201 {
+                                // Si la respuesta es exitosa (status 201), mostramos el mensaje de éxito
+                                self.ventana2("Usuario registrado exitosamente con mensaje: \(response.message)")
+                            } else {
+                                // Si el estado es otro, mostramos el mensaje de error
+                                self.ventana("Error: \(response.message)")
+                            }
+                        } catch {
+                            print("Error en el JSON al intentar decodificar como ResponseMessage: \(error)")
+                            
+                            do {
+                                // Intentamos decodificar como respuesta de error (ErrorResponse)
+                                let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: info!)
+                                // Si la respuesta es de error, mostramos el mensaje de error correspondiente
+                                self.ventana("Error: \(errorResponse.message)")
+                            } catch {
+                                // Si no se puede decodificar como ErrorResponse, mostramos un mensaje genérico
+                                print("Error en el JSON: \(error)")
+                                self.ventana("Hubo un error al registrar el usuario. Intenta nuevamente.")
+                            }
+                        }
                     case .failure(let error as NSError):
-                        print(error)
+                        // Manejar el error de la solicitud
+                        print("Error en la solicitud: \(error)")
+                        self.ventana("Hubo un problema al procesar la solicitud.")
+                    }
                 }
-                
-            })
         }
     
 
@@ -87,7 +83,6 @@ class RegistrarUsuarioViewController: UIViewController {
         let correo=txtCorreoUsuario.text ?? ""
         let contra=txtContrasenaUsuario.text ?? ""
         let obj=Usuario(codigoUsuario: 0, usernameUsuario: username, nombreUsuario: nom, apellidoUsuario: ape, correoUsuario: correo, contrasenaUsuario: contra, isadminUsuario: 0)
-        registrarUsuarioFB(username: username, nombre: nom, apellido: ape, correo: correo, contra: contra)
         registrarUsuarioAPI(bean: obj)
     }
     
@@ -101,5 +96,13 @@ class RegistrarUsuarioViewController: UIViewController {
         present(pantalla, animated: true)
     }
     
+    func ventana2(_ msg:String){
+        let pantalla=UIAlertController(title: "Sistema", message: msg, preferredStyle: .alert)
+        pantalla.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {
+            action in
+            self.performSegue(withIdentifier: "login", sender: nil)
+        }))
+        present(pantalla, animated: true)
+    }
     
 }

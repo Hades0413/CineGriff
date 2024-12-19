@@ -18,6 +18,9 @@ class MenuPrincipalViewController: UIViewController {
     @IBAction func btnListarGoats(_ sender: UIButton) {
         performSegue(withIdentifier: "listarGoats", sender: nil)
     }
+    @IBAction func btnVolverLogin(_ sender: UIButton) {
+        performSegue(withIdentifier: "volverLogin", sender: nil)
+    }
     
     
 }

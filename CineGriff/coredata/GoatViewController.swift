@@ -30,7 +30,7 @@ class GoatViewController: UIViewController,UITableViewDataSource,UITableViewDele
     lista.append(Goat(codigoEstudiante: "I202212048",
                        nombreEstudiante: "Marcelo Adrian",
                        apellidoEstudiante: "Liendo Soto",
-                       correoEstudiante: "i202214870@cibertec.edu.pe"))
+                       correoEstudiante: "i202212048@cibertec.edu.pe"))
     
     lista.append(Goat(codigoEstudiante: "I202212046",
                        nombreEstudiante: "Claudia Yadira",
@@ -40,13 +40,13 @@ class GoatViewController: UIViewController,UITableViewDataSource,UITableViewDele
     lista.append(Goat(codigoEstudiante: "I202217453",
                        nombreEstudiante: "Adriana Sofia",
                        apellidoEstudiante: "Casas Durand",
-                       correoEstudiante: "i202214872@cibertec.edu.pe"))
+                       correoEstudiante: "i202217453@cibertec.edu.pe"))
     
     lista.append(Goat(codigoEstudiante: "I202214869",
                        nombreEstudiante: "Eduardo Miguel",
                        apellidoEstudiante: "Jaime Gomero",
                        correoEstudiante: "I202214869@cibertec.edu.pe"))
-}
+    }
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,10 +62,10 @@ class GoatViewController: UIViewController,UITableViewDataSource,UITableViewDele
     fila.lblNombre.text = "Nombre: \(lista[indexPath.row].nombreEstudiante)"
     fila.lblApellido.text = "Apellido: \(lista[indexPath.row].apellidoEstudiante)"
     fila.lblCorreo.text = "Correo: \(lista[indexPath.row].correoEstudiante)"
-        
     
     return fila
-}
+        
+    }
 
     @IBAction func btnMenuPrincipal(_ sender: UIButton) {
         performSegue(withIdentifier: "home3", sender: nil)
