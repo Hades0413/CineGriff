@@ -27,7 +27,6 @@ class RegistrarUsuarioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //styles -> RegistrarUsuarioUIStyling
         setupUIRegistrarUsuario()
     }
     

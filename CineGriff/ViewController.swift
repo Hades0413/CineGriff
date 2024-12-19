@@ -5,6 +5,8 @@ import FirebaseFirestore
 import GoogleSignIn
 import FirebaseFirestoreInternal
 import Firebase
+import Foundation
+
 
 class ViewController: UIViewController {
 
@@ -34,16 +36,62 @@ class ViewController: UIViewController {
         login(correoUsuario: correo, contrasenaUsuario: contra)
     }
     
-    func login(correoUsuario: String, contrasenaUsuario: String) {
-        Auth.auth().signIn(withEmail: correoUsuario, password: contrasenaUsuario) { data, error in
-            if let info = data {
-                self.ventana2("Inicio de sesión exitoso")
-                self.verificarUsuarioEnAPI(uid: info.user.uid, correoUsuario: correoUsuario)
-            } else {
-                self.ventana("Correo y/o Contraseña incorrectos")
-            }
+    
+func login(correoUsuario: String, contrasenaUsuario: String) {
+    Auth.auth().signIn(withEmail: correoUsuario, password: contrasenaUsuario) { data, error in
+        if let info = data {
+            self.ventana2("Inicio de sesión exitoso")
+            self.verificarUsuarioEnAPI(uid: info.user.uid, correoUsuario: correoUsuario)
+        } else {
+            self.loginConAPI(correoUsuario: correoUsuario, contrasenaUsuario: contrasenaUsuario)
         }
     }
+}
+
+func loginConAPI(correoUsuario: String, contrasenaUsuario: String) {
+    let parameters: [String: Any] = [
+        "correoUsuario": correoUsuario,
+        "usernameUsuario": correoUsuario.isValidEmail() ? nil : correoUsuario,
+        "contrasenaUsuario": contrasenaUsuario
+    ]
+    
+    AF.request("https://cinegriffapi-production.up.railway.app/api/usuario/login", 
+               method: .post, 
+               parameters: parameters, 
+               encoding: JSONEncoding.default)
+        .response { response in
+            switch response.result {
+            case .success(let data):
+                if let data = data {
+                    do {
+                        let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
+                        
+                        if loginResponse.status == 200 {
+                            self.ventana2("Login exitoso con la API")
+                            self.performSegue(withIdentifier: "menuPrincipal", sender: nil)
+                        } else {
+                            self.ventana("Login fallido en la API: \(loginResponse.message)")
+                        }
+                    } catch {
+                        print("Error al decodificar la respuesta de la API: \(error)")
+                        self.ventana("Error al procesar la respuesta de la API.")
+                    }
+                }
+            case .failure(let error):
+                print("Error al hacer login con la API: \(error.localizedDescription)")
+                self.ventana("Error al hacer login con la API.")
+            }
+        }
+}
+
+extension String {
+    func isValidEmail() -> Bool {
+        let emailRegEx = "^[A-Za-z0-9+_.-]+@(.+)$"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: self)
+    }
+}
+
     
     // Verifica si el usuario ya existe en la API y Firestore, si no, lo crea.
     func verificarUsuarioEnAPI(uid: String, correoUsuario: String) {
@@ -71,8 +119,8 @@ class ViewController: UIViewController {
     }
 
     // Registra al usuario en la API
-    func registrarUsuarioEnAPI(uid: String, correoUsuario: String, codigoUsuario: Int) {
-    let usuario = Usuario(codigoUsuario: codigoUsuario, usernameUsuario: uid, nombreUsuario: "", apellidoUsuario: "", correoUsuario: correoUsuario, contrasenaUsuario: "", isadminUsuario: 0)
+    func registrarUsuarioEnAPI(uid: String, correoUsuario: String, codigoUsuario: Int, nombreUsuario: String, apellidoUsuario: String) {
+    let usuario = Usuario(codigoUsuario: codigoUsuario, usernameUsuario: uid, nombreUsuario: nombreUsuario, apellidoUsuario: apellidoUsuario, correoUsuario: correoUsuario, contrasenaUsuario: "", isadminUsuario: 0)
     
     AF.request("https://cinegriffapi-production.up.railway.app/api/usuario/register",
                method: .post,
@@ -96,13 +144,14 @@ class ViewController: UIViewController {
 }
 
 
+
     // Registra al usuario en Firestore
-    func registrarUsuarioEnFirestore(uid: String, correoUsuario: String, codigoUsuario: Int) {
+    func registrarUsuarioEnFirestore(uid: String, correoUsuario: String, codigoUsuario: Int, nombreUsuario: String, apellidoUsuario: String) {
     let BD = Firestore.firestore()
     BD.collection("usuario").document(uid).setData([
-        "usernameUsuario": uid,
-        "nombreUsuario": "",
-        "apellidoUsuario": "",
+        "usernameUsuario": nombreUsuario,
+        "nombreUsuario": nombreUsuario,
+        "apellidoUsuario": apellidoUsuario,
         "correoUsuario": correoUsuario,
         "codigoUsuario": codigoUsuario,
         "isadminUsuario": 0
@@ -114,6 +163,7 @@ class ViewController: UIViewController {
         }
     }
 }
+
 
     
     @IBAction func btnGoogle(_ sender: UIButton) {
@@ -154,8 +204,13 @@ func obtenerDatosUsuario(_ user: User?) {
     guard let user = user else { return }
     
     let uid = user.uid
-    let nombre = user.displayName ?? "Usuario"
+    let displayName = user.displayName ?? "Usuario"
     let correo = user.email ?? ""
+    
+    // Dividir el displayName para obtener nombre y apellido
+    let nombreApellido = displayName.split(separator: " ")
+    let nombre = nombreApellido.first ?? "Nombre"
+    let apellido = nombreApellido.count > 1 ? nombreApellido.last ?? "Apellido" : ""
     
     // Primero, verifica si el usuario ya existe en Firestore
     let BD = Firestore.firestore()
@@ -167,25 +222,26 @@ func obtenerDatosUsuario(_ user: User?) {
 
         if let document = document, document.exists {
             // El usuario ya existe en Firestore
-            print("Usuario ya registrado en Firestore: \(nombre), \(correo)")
-            self.performSegue(withIdentifier: "menuPrincipal", sender: nombre)
+            print("Usuario ya registrado en Firestore: \(displayName), \(correo)")
+            self.performSegue(withIdentifier: "menuPrincipal", sender: displayName)
         } else {
             // El usuario no existe en Firestore, obtenemos el último código de usuario
             self.obtenerUltimoCodigoDeUsuario { ultimoCodigo in
                 let nuevoCodigoUsuario = ultimoCodigo + 1
                 
                 // Registrar al usuario en la API
-                self.registrarUsuarioEnAPI(uid: uid, correoUsuario: correo, codigoUsuario: nuevoCodigoUsuario)
+                self.registrarUsuarioEnAPI(uid: uid, correoUsuario: correo, codigoUsuario: nuevoCodigoUsuario, nombreUsuario: nombre, apellidoUsuario: apellido)
                 
                 // Registrar al usuario en Firestore
-                self.registrarUsuarioEnFirestore(uid: uid, correoUsuario: correo, codigoUsuario: nuevoCodigoUsuario)
+                self.registrarUsuarioEnFirestore(uid: uid, correoUsuario: correo, codigoUsuario: nuevoCodigoUsuario, nombreUsuario: nombre, apellidoUsuario: apellido)
                 
                 // Realizar segue al menú principal
-                self.performSegue(withIdentifier: "menuPrincipal", sender: nombre)
+                self.performSegue(withIdentifier: "menuPrincipal", sender: displayName)
             }
         }
     }
 }
+
 
 func obtenerUltimoCodigoDeUsuario(completion: @escaping (Int) -> Void) {
     AF.request("https://cinegriffapi-production.up.railway.app/api/usuario/listar")

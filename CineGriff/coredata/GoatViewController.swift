@@ -22,30 +22,30 @@ class GoatViewController: UIViewController,UITableViewDataSource,UITableViewDele
     }
     
     func datos() {
-    lista.append(Goat(codigoEstudiante: 1,
+    lista.append(Goat(codigoEstudiante: "I202211470",
                        nombreEstudiante: "Jorge Fabrizio",
                        apellidoEstudiante: "Olano Farfan",
-                       correoEstudiante: "i202214869@cibertec.edu.pe"))
+                       correoEstudiante: "I202211470@cibertec.edu.pe"))
     
-    lista.append(Goat(codigoEstudiante: 2,
+    lista.append(Goat(codigoEstudiante: "I202212048",
                        nombreEstudiante: "Marcelo Adrian",
                        apellidoEstudiante: "Liendo Soto",
                        correoEstudiante: "i202214870@cibertec.edu.pe"))
     
-    lista.append(Goat(codigoEstudiante: 3,
+    lista.append(Goat(codigoEstudiante: "I202212046",
                        nombreEstudiante: "Claudia Yadira",
                        apellidoEstudiante: "Sifuentes Zevallos",
-                       correoEstudiante: "i202214871@cibertec.edu.pe"))
+                       correoEstudiante: "I202212046@cibertec.edu.pe"))
     
-    lista.append(Goat(codigoEstudiante: 4,
+    lista.append(Goat(codigoEstudiante: "I202217453",
                        nombreEstudiante: "Adriana Sofia",
                        apellidoEstudiante: "Casas Durand",
                        correoEstudiante: "i202214872@cibertec.edu.pe"))
     
-    lista.append(Goat(codigoEstudiante: 5,
+    lista.append(Goat(codigoEstudiante: "I202214869",
                        nombreEstudiante: "Eduardo Miguel",
                        apellidoEstudiante: "Jaime Gomero",
-                       correoEstudiante: "i202214869@cibertec.edu.pe"))
+                       correoEstudiante: "I202214869@cibertec.edu.pe"))
 }
 
     
