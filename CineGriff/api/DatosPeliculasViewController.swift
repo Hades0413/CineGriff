@@ -41,6 +41,12 @@ class DatosPeliculasViewController: UIViewController, UIPickerViewDelegate, UIPi
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        setupUIDatosPelicula()
+        
+        
+        
+        
         pvGeneroPeli.delegate=self
         pvGeneroPeli.dataSource=self
         
